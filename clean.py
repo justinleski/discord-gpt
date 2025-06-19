@@ -17,7 +17,7 @@ import json
 import argparse
 from pathlib import Path
 
-# Runs with `python3 clean.py DiscordLogs.json dialog.txt --history 2 --fmt text` using imported logs
+# Runs with `python3 clean.py DiscordLogs.json dialog.txt --history 0 --fmt text` using imported logs
 
 # --------------------------------------------------------------------------- #
 #                               ─── helpers ───                               #

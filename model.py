@@ -8,7 +8,7 @@ from pathlib import Path
 # python3 model.py --mode chat --prompt "hello: "
 #
 # Train:
-# python model.py --mode train
+# python3 model.py --mode train
 #
 
 # Hyper parameters
@@ -257,7 +257,7 @@ if __name__ == "__main__":
         context = torch.zeros((1, 1), dtype=torch.long, device=device)
         print(decode(m.generate(context, max_new_tokens=500)[0].tolist())) # sample output
 
-        #torch.save(model.state_dict(), "discord_gpt.pt") 
+        torch.save(model.state_dict(), "discord_gpt.pt") 
         
     # ------------------------------------------------------------------------
     else:
@@ -273,10 +273,9 @@ if __name__ == "__main__":
         # build model skeleton and load weights
         model = BigramLanguageModel().to(device)
         model.load_state_dict(torch.load(CKPT_FILE, map_location=device))
-        model.eval()                              # <- *critical* for deterministic inference
+        model.eval()
 
-        context = torch.tensor([encode(args.prompt)],
-                               dtype=torch.long, device=device)
+        context = torch.tensor([encode(args.prompt)], dtype=torch.long, device=device)
         output  = model.generate(context, max_new_tokens=500)[0].tolist()
         print(decode(output))
 
