@@ -8,3 +8,8 @@ I wanted to learn how ChatGPT works. Recently, I was following through MIT's Art
 - [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) allowed me to grab messages from a server, then clean it with `clean.py` to feed to the model
 - [Andrej Karpathy](https://youtu.be/kCc8FmEb1nY?si=WB1CDbZFmxV5kxYY) explained how to create a simple GPT
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762) was supplementary to Andrej's video which allowed me to more deeply understand
+
+### TODO
+- Tenor gifs; look up using last part of URL?
+- Interface w/ Angular
+- Dockerize
