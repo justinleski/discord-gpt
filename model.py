@@ -7,10 +7,10 @@ block_size = 256 # max cont a model can see in a step
 n_embd = 384
 n_head = 6
 n_layer = 6
-dropout = 0.0
-max_iters = 2000
+dropout = 0.2
+max_iters = 5000
 eval_interval = 500
-lr = 1e-3
+lr = 3e-4
 eval_iters = 200
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # -----------------------------------------------------
@@ -80,7 +80,7 @@ class Head(nn.Module):
         q = self.query(x)
 
         # idx and targets are both (B,T) tensor of integers
-        wei = q @ k.transpose(-2, -1) * (C ** -0.5)
+        wei = q @ k.transpose(-2, -1) * k.shape[-1]**-0.5
         wei = wei.masked_fill(self.tril[:T, :T] == 0, float("-inf"))
         wei = F.softmax(wei, dim=-1)
         wei = self.dropout(wei)
@@ -95,7 +95,7 @@ class MultiHeadAttention(nn.Module):
     def __init__(self, num_heads, head_size):
         super().__init__()
         self.heads = nn.ModuleList([Head(head_size) for _ in range(num_heads)])
-        self.proj = nn.Linear(n_embd, n_embd)
+        self.proj = nn.Linear(head_size * num_heads, n_embd)
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, x):
@@ -172,9 +172,10 @@ class BigramLanguageModel(nn.Module):
         # idx is (B, T) array of indices in the current context
         for _ in range(max_new_tokens):
             # get the predictions
-            logits, loss = self(idx)
+            idx_cond = idx[:, -block_size:]
             # focus only on the last time step
-            logits = logits[:, -1, :] # becomes (B, C)
+            logits, loss = self(idx_cond)
+            logits = logits[:, -1, :]
             # apply softmax to get probabilities
             probs = F.softmax(logits, dim=-1) # (B, C)
             # sample from the distribution
@@ -209,6 +210,6 @@ for iter in range(max_iters):
 
 # generate from the model
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
-print(decode(m.generate(context, max_new_tokens=2000)[0].tolist()))
+print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
 
 # torch.save(model.state_dict(), "discord_gpt.pt") 
