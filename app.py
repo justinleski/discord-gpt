@@ -1,9 +1,11 @@
-from flask import Flask, jsonify, request
-from model import encode, decode
+from flask import jsonify, request, Blueprint
+from model import encode, decode, GPTLanguageModel
 import torch
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-# app = Flask(__name__) # references this file
+model  = GPTLanguageModel().to(device)
+# model.load_state_dict(torch.load("discord_gpt.pt", map_location=device))
+# model.eval() #FIXME:
 
 # Set up routes with app-route decorator
 # @app.route('/predict', methods=['POST'])
@@ -15,10 +17,18 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 @torch.no_grad()
 def generate_text(prompt, n_tokens=200):
     index = torch.tensor([encode(prompt)], dtype=torch.long, device=device)
+    out = model.generate(index, max_new_tokens=n_tokens)[0].toList()
+    return decode(out[len(prompt):])
+
+api = Blueprint("api", __name__)
 
 @api.post("/generate")
 def generate():
-    data = request.get_json()
+    data = request.get_json(force=True) # Flask will grab POST request's data
+    prompt = data.get("prompt", "") # map into data dict with fallback
+    n_tok  = int(data.get("max_tokens", 120))
+    result = generate_text(prompt, n_tok)
+    return jsonify({"completion": result})
 
 
 

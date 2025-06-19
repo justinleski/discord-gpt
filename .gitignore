@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# For privacy
+DiscordLogs.json
+dialog.txt
+
 # C extensions
 *.so
 
