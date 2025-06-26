@@ -8,4 +8,5 @@ import { Component, signal } from '@angular/core';
 })
 export class HeaderComponent {
   title = signal('My first Angular App')
+  isFeltLike = false;
 }

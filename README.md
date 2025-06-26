@@ -1,4 +1,4 @@
-# CookedGPT
+# DiscordGPT
 This project is General Pretrained Transformer (GPT) which utilizes data grabbed from a Discord server. The frontend is built with Angular and the model responses and queries are served with Flask.
 
 ### Purpose

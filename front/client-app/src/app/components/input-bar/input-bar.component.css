@@ -1,0 +1,80 @@
+.input-bar {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.input-bar form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-bar textarea {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+  line-height: 1.5;
+  min-height: 3rem;
+  max-height: 200px;
+  box-sizing: border-box;
+}
+
+/* .input-bar textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+} */
+
+.input-bar button {
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.input-bar button:hover {
+  background-color: #2563eb;
+}
+
+
+
+/* SCROLL BAR */
+
+.input-bar textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.input-bar textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.input-bar textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.input-bar textarea {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+.input-bar textarea {
+  overflow-y: auto;
+  padding-right: 1rem; 
+  box-sizing: border-box;
+}
