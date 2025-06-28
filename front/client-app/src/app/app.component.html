@@ -8,23 +8,28 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-color: blue;
+    background-color: rgb(175, 175, 222);
   }
 
   .content {
     max-width: clamp(720px, 70vw, 1080px);
     min-width: 720px;
     background-color: gray;
+    height: 100vh;
+    display: grid;
+    grid-template: 3fr 1fr / 1fr;
+  }
+
+  #input {
+    display: inline;
   }
 </style>
 
 <main class="main">
   <div class="content">
-    <p>Hello!</p>
-
     <!-- Populate with messages and input box -->
     <div id="chats"></div>
-    <app-input-bar />
+    <app-input-bar id="input" />
   </div>
 </main>
 
