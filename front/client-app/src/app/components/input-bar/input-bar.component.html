@@ -1,6 +1,10 @@
 <div class="input-bar">
-  <form>
-    <textarea placeholder="Type a message..."></textarea>
+  <form (submit)="onSubmit(); $event.preventDefault()">
+    <textarea
+      [(ngModel)]="prompt"
+      name="prompt"
+      placeholder="Type a message..."
+    ></textarea>
     <button type="submit">Submit</button>
   </form>
 </div>

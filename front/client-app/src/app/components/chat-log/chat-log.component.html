@@ -1,1 +1,9 @@
-<p>chat-log works!</p>
+<div id="chats">
+  <!-- Using @for directive for angular 20: https://angular.dev/api/core/@for -->
+  <!-- Call mesages like a function since it is WriteableSignal not an array -->
+  @for (msg of messages(); track msg.id) {
+  <div [ngClass]="msg.role">{{ msg.content }}</div>
+  } @empty {
+  <p>Start a new chat!</p>
+  }
+</div>
