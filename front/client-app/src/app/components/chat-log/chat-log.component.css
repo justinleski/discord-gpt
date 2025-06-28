@@ -1,0 +1,27 @@
+#chats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+}
+
+#chats > * {
+
+    padding: 16px;
+    background-color: white;
+    border-radius: 16px;
+}
+
+/* user bubbles – push them right */
+#chats .user {
+  align-self: flex-end;      /* takes bubble to the right */
+  background: rgb(143, 207, 239);
+  margin-left: 25%;          /* sliver of space on left (optional) */
+}
+
+/* AI bubbles – default left alignment */
+#chats .ai {
+  align-self: flex-start;    /* default, but explicit for clarity */
+  background: rgb(230, 230, 230);
+  margin-right: 25%;         /* mirror spacing (optional) */
+}

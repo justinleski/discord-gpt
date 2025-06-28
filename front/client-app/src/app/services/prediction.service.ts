@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PredictionService {
 
-  private predictionUrl = 'http://localhost:5000/predict'; //TODO: make in .env
+  private predictionUrl = 'http://localhost:5000/api/generate'; //TODO: make in .env
 
   constructor(private http: HttpClient) { }
 

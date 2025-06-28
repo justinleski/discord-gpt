@@ -28,8 +28,11 @@
 <main class="main">
   <div class="content">
     <!-- Populate with messages and input box -->
-    <div id="chats"></div>
-    <app-input-bar id="input" />
+    <app-chat-log #chatLog></app-chat-log>\
+
+    <app-input-bar
+      (submitPrompt)="chatLog.handlePrompt($event)"
+    ></app-input-bar>
   </div>
 </main>
 

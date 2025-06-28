@@ -23,6 +23,16 @@ eval_interval = 500
 lr = 3e-4
 eval_iters = 200
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+#defien for use of Flask temp
+META_FILE = "meta_vocab.pkl"
+with open(META_FILE, "rb") as f:
+    meta = pickle.load(f)
+
+stoi, itos = meta["stoi"], meta["itos"]
+encode = lambda s: [stoi[c] for c in s]
+decode = lambda t: ''.join(itos[i] for i in t)
+vocab_size = len(stoi) 
 # -----------------------------------------------------
 
 # ==== Classes =====
