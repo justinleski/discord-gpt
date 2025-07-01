@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 // Angular app.config injects http Client, should be good for use now
 import { FormsModule } from '@angular/forms';
-import { NgClass } from '@angular/common';
 
 
 @Component({
   selector: 'app-input-bar',
-  imports: [NgClass, FormsModule],
+  imports: [ FormsModule],
   templateUrl: './input-bar.component.html',
   styleUrl: './input-bar.component.css'
 })

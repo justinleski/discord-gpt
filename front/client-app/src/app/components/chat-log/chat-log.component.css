@@ -10,6 +10,7 @@
     padding: 16px;
     background-color: white;
     border-radius: 16px;
+    min-width: 17.5%;
 }
 
 /* user bubbles – push them right */

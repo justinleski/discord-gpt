@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputBarComponent } from './components/input-bar/input-bar.component';
 import { ChatLogComponent } from './components/chat-log/chat-log.component';
