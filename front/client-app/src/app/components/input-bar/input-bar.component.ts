@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-bar',
-  imports: [ FormsModule],
+  imports: [ FormsModule ],
   templateUrl: './input-bar.component.html',
   styleUrl: './input-bar.component.css'
 })

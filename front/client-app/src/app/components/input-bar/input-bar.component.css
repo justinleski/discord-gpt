@@ -1,11 +1,18 @@
+.input-wrapper {
+  height: 100%;
+  width: 100%;
+  
+}
+
 .input-bar {
-  position: sticky;
   bottom: 0;
   background-color: white;
   padding: 1rem;
   border-top: 1px solid #e5e7eb;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
   z-index: 10;
+  height: 50%;
+  border-radius: 16px;
 }
 
 .input-bar form {

@@ -23,12 +23,16 @@
   #input {
     display: inline;
   }
+
+  #chat-log {
+    padding-top: clamp(16px, 10vh, 64px);
+  }
 </style>
 
 <main class="main">
   <div class="content">
     <!-- Populate with messages and input box -->
-    <app-chat-log #chatLog></app-chat-log>
+    <app-chat-log id="chat-log" #chatLog></app-chat-log>
 
     <app-input-bar
       (submitPrompt)="chatLog.handlePrompt($event)"
