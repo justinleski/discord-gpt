@@ -1,6 +1,7 @@
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
+    --bg-color: oklch(96.977% 0.00586 264.664);
   }
 
   .main {
@@ -8,16 +9,17 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(175, 175, 222);
+    background-color: var(--bg-color);
   }
 
   .content {
-    max-width: clamp(720px, 70vw, 1080px);
+    max-width: 1080px;
     min-width: 720px;
-    background-color: gray;
+    width: clamp(720px, 70vw, 1080px);
+    background-color: var(--bg-color);
     height: 100vh;
     display: grid;
-    grid-template: 3fr 1fr / 1fr;
+    grid-template: 0.25fr 3fr 1fr / 1fr;
   }
 
   #input {
@@ -27,16 +29,27 @@
   #chat-log {
     padding-top: clamp(16px, 10vh, 64px);
   }
+
+  #title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--bright-blue);
+  }
 </style>
 
 <main class="main">
   <div class="content">
     <!-- Populate with messages and input box -->
+    <h1 id="title">DiscordGPT</h1>
     <app-chat-log id="chat-log" #chatLog></app-chat-log>
 
     <app-input-bar
       (submitPrompt)="chatLog.handlePrompt($event)"
     ></app-input-bar>
+
+    <app-footer></app-footer>
   </div>
 </main>
 

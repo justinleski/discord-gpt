@@ -38,14 +38,55 @@
 
 /* user bubbles – push them right */
 #chats .user {
-  align-self: flex-end;      /* takes bubble to the right */
+  align-self: flex-end;
   background: rgb(143, 207, 239);
-  margin-left: 25%;          /* sliver of space on left (optional) */
+  margin-left: 25%;
 }
 
 /* AI bubbles – default left alignment */
 #chats .ai {
-  align-self: flex-start;    /* default, but explicit for clarity */
+  align-self: flex-start; 
   background: rgb(230, 230, 230);
-  margin-right: 25%;         /* mirror spacing (optional) */
+  margin-right: 25%;       
 }
+
+#new-chat {
+  display: flex;          
+  justify-content: center;
+
+  height: 100%;
+  margin: 0;
+  color: #888; 
+  font-style: italic;
+}
+
+/* ANimations */
+.message-box {
+  animation: popIn 300ms ease-out forwards;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: box-shadow 0.2s ease;
+}
+
+.message-box:hover {
+  box-shadow: 0 4px 12px rgba(10, 11, 16, 0.169);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+

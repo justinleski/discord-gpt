@@ -1,0 +1,13 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8rem;
+    align-items: center;
+
+    border: none;                 /* remove all four borders */
+    border-top: 1px solid oklch(51.01% 0.274 263.83);   /* keep only the top border */
+    outline: none;                /* (optional) remove focus outline */
+    padding: 16px;                 /* add inner space since borders are gone */
+    resize: vertical; 
+}
